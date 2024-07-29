@@ -16,16 +16,16 @@ jobs:
         with:
           node-version: '21.5.0'
       - name: Install dependencies
-        working-directory: ./client
+        working-directory: ./frontend
         run: npm ci
       - name: Build
-        working-directory: ./client
+        working-directory: ./frontend
         run: npm run build
       - name: Compress build
-        working-directory: ./client
+        working-directory: ./frontend
         run: tar -czf build.tar.gz -C build .
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            ./client/build.tar.gz
+            ./frontend/build.tar.gz
